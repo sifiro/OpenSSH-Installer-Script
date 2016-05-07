@@ -15,6 +15,7 @@ The Script for n00bs and lazy people
  * OpenSSH-Installer-Script -- Programa Principal.
 
 * TO-DO:
+  * Crear un Branch adicional para el Trabajo y dejar Master para seguir Trabajando. 
   * MAS ESTILO!!!!!!!!!!! MAS COLORES!!!!!!!!!!!!!!!!!
   * Mejorar Estructura de los Ficheros.
   * Modo Unsupported/LFS: Compilacion.
