@@ -1,5 +1,7 @@
 # OpenSSH-Installer-Script PRE-ALPHA
 
+The Script for n00bs and lazy people 
+
 * Caracterisitcas
   * -Soporte Multidiestro (De momento, Gentoo, Ubuntu y Debian)
   * -Sistema de Integridad de los Ficheros
