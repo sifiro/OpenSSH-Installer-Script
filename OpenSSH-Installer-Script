@@ -1,6 +1,6 @@
 #!/bin/bash
 ################################################################################
-#   Autor: Gabriel Bustillo del Cuvillo		  			   #
+#   Autor: Sifiro		  			   #
 #   Version: 1.0				  			   #
 #   Licencia: GPL 3.0				  			   #
 #   Codigo Fuente: http://github.com/sifiro/????/			   #
@@ -10,7 +10,7 @@
 clear
 files="./files"
 echo "----------------------------------------------------------------"
-echo "OpenSSH Installer Script by Sifiro/Gabriel Bustillo del Cuvillo"
+echo "OpenSSH Installer Script by Sifiro"
 echo "----------------------------------------------------------------"
 ##sleep 1
 echo "Se Procedera a hacer un chequeo de requisitos e integridad de los ficheros"
@@ -29,10 +29,12 @@ source $files/check ## Carga la Libreria Check
 check ## Carga la Funcion Check
 ##################################################
 
-
+if [ ${check_status}[0]} -ne -1  ];then
 ##################################################
 source $files/menu
 source $files/instal
 source $files/configure
 ##################################################
 menu ##Carga el Menu
+else echo "Sistema Operativo no Soportado. Consulte con Sifiro o vaya a hacer un pull request"
+fi
