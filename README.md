@@ -27,6 +27,7 @@ The Script for n00bs and lazy people
   * Introducir Soporte Multi-Idioma (Basado en los Locales de las Variables del Sistema)
   * Crear Herramienta de automatizacion de valores por defecto.
   * Crear Herramienta de automatizacion de Traducciones.
+  * Crear Herramienta de automatizacion de soporte a Distribuciones.
   * Activar/Desactivar Servicio u Activar arrancar con el Sistema o Desactivar.
   * Comentar el Codigo
   * Añadir Sistemas Operativos Mainstream (Red Hat Family, Suse Familiy, Arch Linux Family)
