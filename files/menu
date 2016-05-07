@@ -1,0 +1,45 @@
+#!/bin/bash
+function menu (){
+source $files/*
+clear
+check_status=(1 1 1 1 1 1 1);
+op=-1;
+until [ op -eq 5 ]
+do
+clear
+echo "------------------------------------"
+echo "              Menu                  "
+echo "------------------------------------"
+if [ ${check_status[2]} -eq 1 ];then
+	echo "1.Instalar OpenSSH"
+fi
+if [ ${check_status[3]} -eq 1 ];then
+	echo "2.Configurar OpenSSH"
+fi
+if [ ${check_status[4]} -eq 1 ];then
+echo "3.Configurar ficheros allow/deny"
+fi
+if [ ${check_status[5]} -eq 1 ];then
+echo "4.Desinstalar OpenSSH"
+fi
+echo "5.Salir"
+read op
+case "$op" in
+1) if [ ${check_status[2]} -eq 1 ];then instal
+else echo "OPCION NO DISPONIBLE";read
+fi;;
+2) if [ ${check_status[3]} -eq 1 ];then configure
+else echo "OPCION NO DISPONIBLE";read
+fi;;
+3)if [ ${check_status[4]} -eq 1 ];then files
+else echo "OPCION NO DISPONIBLE";read
+fi;;
+4) if [ ${check_status[5]} -eq 1 ];then uninstall
+else echo "OPCION NO DISPONIBLE";read
+fi;;
+5) break;;
+*) echo "Error, Opcion no Valida, Pulse cualquier tecla";read;;
+esac
+done
+clear
+}

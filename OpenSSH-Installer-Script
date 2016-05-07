@@ -1,0 +1,38 @@
+#!/bin/bash
+################################################################################
+#   Autor: Gabriel Bustillo del Cuvillo		  			   #
+#   Version: 1.0				  			   #
+#   Licencia: GPL 3.0				  			   #
+#   Codigo Fuente: http://github.com/sifiro/????/			   #
+#
+#						  #
+###################################################
+clear
+files="./files"
+echo "----------------------------------------------------------------"
+echo "OpenSSH Installer Script by Sifiro/Gabriel Bustillo del Cuvillo"
+echo "----------------------------------------------------------------"
+##sleep 1
+echo "Se Procedera a hacer un chequeo de requisitos e integridad de los ficheros"
+read
+##Check - Libreria de Control de Ficheros, Integracion y Deteccion del 
+## de la Diestro GNU/Linux
+# Su Resultado es un Array llamado check_status
+# de longitud 6 elementos
+# Defecto: -1 0 0 0 0 0
+# El Primer Elemento identifica el Sistema Operativo
+# -1 = No Compatible # 0 = Gentoo # 1= Ubuntu # 2=Debian
+# los demas elementos son la disponibilidad de los ficheros representado por
+# 0 = No Disponible # 1 = Disponible 
+##################################################
+source $files/check ## Carga la Libreria Check
+check ## Carga la Funcion Check
+##################################################
+
+
+##################################################
+source $files/menu
+source $files/instal
+source $files/configure
+##################################################
+menu ##Carga el Menu

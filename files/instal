@@ -1,0 +1,45 @@
+#!/bin/bash
+clear
+check_status=(1 1 1 1 1 1 1);
+function test(){
+ping -c2 8.8.8.8 >/dev/null 2> /dev/null
+if [ $? -eq 0 ]
+then go
+fi
+}
+function set_env(){
+if [ ${check_status[0]} -eq 0 ];then package="emerge" update="--sync" instal="-a" package="net-misc/openssh"
+fi
+if [ ${check_status[0]} -eq 1 ] || [ ${check_status[0]} -eq 2 ];then pm="apt-get" update="update" instal="-y install" package="openssh-server"
+fi
+}
+
+function go(){
+echo "Se Procedera a Instalar OpenSSH, este proceso es automatico"
+sleep 1
+echo "Pero antes necesitamos tu contraseña para continuar"
+su-metodo "$pm $update;$pm $instal $package"
+
+function su-metodo (){
+if type gksu > /dev/null 2>/dev/null;then gksu -S $1
+elif type sudo > /dev/null 2>/dev/null;then su $1
+else su -c $1;
+fi
+}
+function instal (){
+set_env
+opcion="";
+while [ true ]
+do
+echo "Esta Operacion requerira conexion a Internet"
+echo "Se Comprobara que tengas Conexion a Internet"
+echo "Quieres Comenzar?"
+echo "1=Si o 2=No"
+read opcion
+case "$opcion" in
+	1)test;;
+	2)break;;
+esac
+done
+}
+

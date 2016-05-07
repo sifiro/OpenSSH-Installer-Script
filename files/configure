@@ -1,0 +1,28 @@
+#!/bin/bash
+function configure (){
+##Se copia 
+ssho="/etc/ssh/sshd_config"
+tmp='/tmp/sshd_config'
+su-metodo "cp $ssho $tmp"
+textos=("Desea Cambiar los puertos?" "Desea que se pueda acceder a root remotamente?" \
+"Permitir contraseñas Vacias?" "Permitir hacer Tuneles X11?" "Mostrar el Ultimo Login" \
+"")
+options=(Port PermitRootLogin PermitEmptyPasswords X11Forwarding PrintLastLog)
+default=(22 no no no yes 2) 
+for((i=0;i<${#textos[*]};++i))
+do
+echo ${textos[i]}
+read op
+if [ $op != "" ];then echo
+fi
+sed "/^${options[i]}/ c${options[i]} ${default[i}" $tmp > tmp&&mv tmp 
+$tmp
+done
+}
+configure
+##1- Desea Cambiar los puertos? OK
+##2- Desea que se pueda acceder a root remotamente? OK
+##3- Permitir contraseñas Vacias? OK
+##4- Hacer Tuneles X11? OK
+##5- Mostrar el Ultimo Login OK
+##6- Maximas Conexiones por usuario

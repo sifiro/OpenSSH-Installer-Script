@@ -1,0 +1,52 @@
+#!/bin/bash
+function check () {
+## Variables Iniciales
+names=("menu" "instal" "configure" "files" "uninstall")
+files_sha256=(a17d569cd063d55e1a4b3325140de5bf17fa9cf00422ded6510ebe8d5485be1c 9bb9539103cd3801587f5eb4b2297793f16ba113716ca586f390c6c71f337c88 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+# 0 -- Diestro Compatible 1-5 Check de Ficheros
+# El Primer elemento del Array indica el Sistema operativo compatible que se usara y apartir de ahi su gestor de paquetes
+check_status=(-1 0 0 0 0 0);
+support_dist=("Gentoo" "Ubuntu" "Debian");
+package_dist=("emerge" "apt-get" "apt-get");
+##COLORES
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NORM='\033[0m'
+echo "Chequeando Sistema Operativo"
+linux=`lsb_release -i | cut -f2`
+sleep 1
+echo "Sistema Operativo Seleccionando: $linux"
+echo "Comprobando Compatibilidad con el Script"
+sleep 1
+for((i=0;i<${#support_dist[*]};++i))
+	do
+		if [ "$linux" = "${support_dist[i]}" ];then 
+			check_status[0]=$i
+			echo "Sistema Operativo Compatible"
+			break
+		fi
+done
+
+for((i=0;i<${#names[*]};++i))
+	do
+	directory=files/${names[i]}
+	echo -n Chequeando ${names[i]}
+			if [ -f $directory ] ;then 
+				echo -n ".";
+				sleep 1
+				echo -n ".";
+				if [ "${files_sha256[i]}" = "`sha256sum $directory| cut -d' ' -f1`" ];then
+					sleep 1
+					check_status[`expr $i + 1`]=1
+					echo -e ". ${GREEN}OK${NORM}";
+					else 
+						echo -e "  ${RED}FAIL"
+						echo -e "ERROR,PROBLEMAS CON LA INTEGRACION DEL FICHERO${NORM}"
+				fi
+				else 
+				echo -e "  ${RED}FAIL"
+				echo -e " ERROR, FICHERO NO EXISTENTE${NORM}"
+			fi
+	done
+}
