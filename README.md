@@ -11,6 +11,8 @@
   * MAS ESTILO!!!!!!!!!!! MAS COLORES!!!!!!!!!!!!!!!!!  
   * Mejorar Estructura de los Ficheros.
   * Modo Unsupported/LFS: Compilacion.
+  * Modo Actualizacion.
+  * Checkception: AKA Control de Ficheros en modo lunatico.
   * Integrar Soporte con wget/curl
   * Integrar pv.
   * Introducir Soporte Multi-Idioma (Basado en los Locales de las Variables del Sistema)
