@@ -8,6 +8,7 @@
   * -Modo Recuperacion en caso de corrupcion de los Ficheros.(WIP!)
 
 * TO-DO:
+  * MAS ESTILO!!!!!!!!!!! MAS COLORES!!!!!!!!!!!!!!!!!  
   * Mejorar Estructura de los Ficheros.
   * Modo Unsupported/LFS: Compilacion.
   * Integrar Soporte con wget/curl
