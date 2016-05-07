@@ -12,6 +12,7 @@
   * Modo Unsupported/LFS: Compilacion.
   * Integrar Soporte con wget/curl
   * Integrar pv.
+  * Introducir Soporte Multi-Idioma (Basado en los Locales de las Variables del Sistema)
   * Activar/Desactivar Servicio u Activar arrancar con el Sistema o Desactivar.
   * Comentar el Codigo
   * Añadir Sistemas Operativos Mainstream (Red Hat Family, Suse Familiy, Arch Linux Family)
