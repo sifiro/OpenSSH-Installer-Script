@@ -2,12 +2,17 @@
 
 The Script for n00bs and lazy people 
 
-* Caracterisitcas
+* Caracteristicas
   * -Soporte Multidiestro (De momento, Gentoo, Ubuntu y Debian)
   * -Sistema de Integridad de los Ficheros
   * -Soporte con su,sudo y gksu
   * -Modo de Configuracion Automatizada (WIP!)
   * -Modo Recuperacion en caso de corrupcion de los Ficheros.(WIP!)
+
+* Ficheros:
+ * Tools/generate-hash -- Heramienta que genera Hashes de forma automatizada y remplaza el array de hashes del fichero check
+ * files/* -- Librerias con Funciones
+ * OpenSSH-Installer-Script -- Programa Principal.
 
 * TO-DO:
   * MAS ESTILO!!!!!!!!!!! MAS COLORES!!!!!!!!!!!!!!!!!
