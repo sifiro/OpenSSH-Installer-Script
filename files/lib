@@ -1,4 +1,11 @@
 #!/bin/bash
+
+function workdir (){
+if not exist /tmp/osi;then mkdir /tmp/osi;
+workdir="/tmp/osi";
+fi
+}
+
 # Selecciona el Entorno 
 function set_env(){
 if [ ${check_status[0]} -eq 0 ];then package="emerge" purge="-cav" update="--sync" instal="-a" package="net-misc/openssh"
@@ -10,7 +17,8 @@ fi
 function su_metodo (){
 if type gksu > /dev/null 2>/dev/null;then gksu -S $1
 elif type sudo > /dev/null 2>/dev/null;then su $1
-else echo "Escriba la Contraseña de Root" su -c $1;
+else echo "Escriba la Contraseña de Root"; su -c $1;
+fi
 }
 
 ## Funcion de Testeo de Conexion a Internet
@@ -20,5 +28,37 @@ if [ $? -eq 0 ]
 then $1
 fi
 }
+# Funcion de comprobacion basica de ip validas
+function ip_check (){
+ip_invalid=-1;
+local tmp=(`echo $1 | tr "." " "`)
+for((i=1; i<${#tmp[*]}; ++i))
+do
+echo $ip_invalid
+if [ ${tmp[i]} -lt 0 ] || [ ${tmp[i]} -gt 255 ];then 
+ip_invalid=1;break;
+fi
+ip_invalid=0
+done
+}
+## Comprueba que el Usuario Exista
+function user_check (){
+local users=(`cat /etc/passwd | cut -d":" -f1 | tr "\n" " "`);
+echo ${users[*]}
+for((i=0;i<${#users[*]};++i))
+do
+echo ${users[i]}
+if [ "${users[i]}" = "$1" ];then user=1;break;
+fi
+user=0
+done
+}
+##Sustitucion automatica.
+function sus (){
+if grep -Fxq "^$1" $3;then 
+sed "/^$1/ c$1=(${$2[*]})" $tmp > $workdir/tmp; cat $workdir/tmp
+else "$1 $2" >> $3 
+fi
+}
 
-
+workdir

@@ -14,6 +14,10 @@ RED='\033[0;31m'
 NORM='\033[0m'
 ## Directorio de librerias
 files="$PWD/files"
+## Creando Carpeta Temporal (Por si fuera necesario)
+if not exist /tmp/osi;then mkdir /tmp/osi
+workdir="/tmp/osi"
+fi
 echo "----------------------------------------------------------------"
 echo "OpenSSH Installer Script by Sifiro"
 echo "----------------------------------------------------------------"

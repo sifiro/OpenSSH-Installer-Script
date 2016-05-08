@@ -32,9 +32,11 @@ The Script for n00bs and lazy people
   * Comentar el Codigo
   * Añadir Sistemas Operativos Mainstream (Red Hat Family, Suse Familiy, Arch Linux Family)
 
-* Requisitos Minimos de Caracteristicas (Esto es una Tarea xd):
+* Requisitos Minimos de Caracteristicas (Esto es una Tarea xd):0
  * La opción 1 comprobará primero que el paquete no está instalado. Actualizará los repositorios e instalará el paquete. - OK
- * La opción 2 solicitará al usuario el nombre de dos ficheros, uno que contendrá nombres de usuario (separados por espacios en blanco o en líneas diferentes) a los que se permitirá hacer ssh. El segundo fichero contendrá las direcciones ip a las que se permite hacer ssh (separadas por espacios en blanco o en líneas diferentes). - WIP!
+ * La opción 2 solicitará al usuario el nombre de dos ficheros, uno que contendrá nombres de usuario (separados por espacios en blanco o en líneas diferentes) a los que se permitirá hacer ssh. 
+El segundo fichero contendrá las direcciones ip a las que se permite hacer ssh (separadas por espacios en blanco o en líneas diferentes). - WIP!
+
  * La opción 3 incorporará las direcciones ip permitidas al fichero allow. El dený deberá configurarse para que sea lo más seguro posible. - .
  * La opción 4 desinstalará el servicio y eliminará la referencia a ssh en el fichero allow (Esto último opcional). - .
 * Deberás emplear/realizar:

@@ -12,30 +12,78 @@
 #																							#
 #																							#
 #############################################################################################
+source ./lib
 function configure (){
 ## Asigancion de Variables de directorios 
 ssho="/etc/ssh/sshd_config"
-tmp='/tmp/sshd_config'
+tmp="$workdir/sshd_config"
 ##Se hace una instancia del fichero por razones de seguridad
 su-metodo "cp $ssho $tmp"
-## Un Array de Opciones
-textos=("Desea Cambiar los puertos?" "Desea que se pueda acceder a root remotamente?" \
-"Permitir contraseñas Vacias?" "Permitir hacer Tuneles X11?" "Mostrar el Ultimo Login" \
-"")
-# Los nombres de los parametros
-options=(Port PermitRootLogin PermitEmptyPasswords X11Forwarding PrintLastLog)
-# Opciones por defecto en caso de que el usuario no especifique nada.
-default=(22 no no no yes 2) 
-for((i=0;i<${#textos[*]};++i))
+##
+users=()
+user=-1;
+until [ "$op" = "q"  ]
 do
-echo ${textos[i]}
+echo $user
 read op
-if [ $op != "" ];then echo
+if [ $op != "q" ];then
+	user_check $op
+		if [ $user -eq 1 ];then
+			users=(${users[*]} $op)
+		else
+		echo "Usuario no Existente"
+		fi
 fi
-sed "/^${options[i]}/ c${options[i]} ${default[i}" $tmp > tmp&&mv tmp 
-$tmp
 done
+
+sus "AllowUsers" "${users[*]" "$tmp"
+
+op="":
+## Añade IP
+ip_invalid=-1;
+ip=()
+echo "Introduce las Direcciones IP que desea permitir conexion SSH"
+echo "pulsa 'q' para terminat"
+until [ "$op" = "q" ]
+do
+read op
+if [ "$op" != "q"  ];
+	then ip_check $op
+	if [ $ip_invalid -eq 0 ];then 
+		ip="${ip[*]} $op"
+	else echo "Direccion IP No Valida"
+	fi
+fi
+done
+echo ${ip[*]}
 }
+
+
+
+
+
+
+
+############## NO NECESARIO PARA LA VERSION CORE ################
+
+## Un Array de Opciones
+#textos=("Desea Cambiar los puertos?" "Desea que se pueda acceder a root remotamente?" \"Permitir contraseñas Vacias?" "Permitir hacer Tuneles X11?" "Mostrar 
+#el Ultimo Login" \
+#"")
+# Los nombres de los parametros
+#options=(Port PermitRootLogin PermitEmptyPasswords X11Forwarding PrintLastLog)
+# Opciones por defecto en caso de que el usuario no especifique nada.
+#default=(22 no no no yes 2) 
+#for((i=0;i<${#textos[*]};++i))
+#do
+#echo ${textos[i]}
+#read op
+#if [ $op != "" ];then echo
+#fi
+#sed "/^${options[i]}/ c${options[i]} ${default[i}" $tmp > tmp&&mv tmp 
+#$tmp
+#done
+#}
 configure
 ##1- Desea Cambiar los puertos? OK
 ##2- Desea que se pueda acceder a root remotamente? OK
