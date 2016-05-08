@@ -1,4 +1,24 @@
 #!/bin/bash
+#############################################################################################
+#																							#
+#	Autor: Sifiro		  			   														#
+#   Version: 1.0				  			   												#
+#   Licencia: GPL 3.0																		#
+#   Codigo Fuente: https://github.com/sifiro/OpenSSH-Installer-Script 						#
+#																							#
+#############################################################################################
+#############################################################################################
+#																							#
+# Check - Libreria de Control de Ficheros, Integracion y Deteccion de la Diestro GNU/Linux 	#
+#																							# 
+# Su Resultado es un Array llamado check_status de longitud 6 elementos					   	#				
+# Defecto: -1 0 0 0 0 0																		#
+# El Primer Elemento identifica el Sistema Operativo										#
+# -1 = No Compatible # 0 = Gentoo # 1= Ubuntu # 2=Debian									#
+# los demas elementos son la disponibilidad de los ficheros representado por				#
+# 0 = No Disponible # 1 = Disponible 														#
+#																							#
+#############################################################################################
 function check () {
 ## Variables Iniciales
 names=("menu" "instal" "configure" "files" "uninstall")
@@ -7,12 +27,6 @@ files_sha256=(a17d569cd063d55e1a4b3325140de5bf17fa9cf00422ded6510ebe8d5485be1c 9
 # El Primer elemento del Array indica el Sistema operativo compatible que se usara y apartir de ahi su gestor de paquetes
 check_status=(-1 0 0 0 0 0);
 support_dist=("Gentoo" "Ubuntu" "Debian");
-package_dist=("emerge" "apt-get" "apt-get");
-##COLORES
-
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NORM='\033[0m'
 echo "Chequeando Sistema Operativo"
 linux=`lsb_release -i | cut -f2`
 sleep 1

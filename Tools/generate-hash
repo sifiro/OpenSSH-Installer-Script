@@ -3,7 +3,7 @@ function algoritm () {
 sha256sum $1 | cut -d' ' -f1
 }
 work="$OLDPWD/files"
-files=('menu' 'install' 'configure' 'files' 'uninstall')
+files=('menu' 'install' 'configure' 'files' 'uninstall' 'lib')
 sha256=('' '' '' '' '')
 for((i=0;i<${#files[@]};++i))
 do

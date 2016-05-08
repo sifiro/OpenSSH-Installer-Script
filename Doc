@@ -1,0 +1,10 @@
+Esquema de Funciones:
+## lib:
+set_env -- Asignacion de Gestor de paquetes y de 2
+wan_check -- Chequeo Previo de Disponibilidad de Conexion de Internet. $1 comando al Proceder
+su_metodo -- Metodo de Subida de Privilegios. $1 al requerir.
+## Instal:
+instal -- Pantalla de instalacion para el usuario.
+instal_go -- Procedimiento de instalacion.
+## Configure configure -- Funcion Main de configure, que permite configurar el archivo sshd_configure
+## Menu menu -- Funcion Main de menu, Simplemente muestra un menu al usuario

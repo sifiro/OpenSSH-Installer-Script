@@ -1,13 +1,30 @@
 #!/bin/bash
+#############################################################################################
+#																							#
+#	Autor: Sifiro		  			   														#
+#   Version: 1.0				  			   												#
+#   Licencia: GPL 3.0																		#
+#   Codigo Fuente: https://github.com/sifiro/OpenSSH-Installer-Script 						#
+#																							#
+#############################################################################################
+#																							#
+#	Funcion de Configuracion del fichero sshd_config										#
+#																							#
+#																							#
+#############################################################################################
 function configure (){
-##Se copia 
+## Asigancion de Variables de directorios 
 ssho="/etc/ssh/sshd_config"
 tmp='/tmp/sshd_config'
+##Se hace una instancia del fichero por razones de seguridad
 su-metodo "cp $ssho $tmp"
+## Un Array de Opciones
 textos=("Desea Cambiar los puertos?" "Desea que se pueda acceder a root remotamente?" \
 "Permitir contraseñas Vacias?" "Permitir hacer Tuneles X11?" "Mostrar el Ultimo Login" \
 "")
+# Los nombres de los parametros
 options=(Port PermitRootLogin PermitEmptyPasswords X11Forwarding PrintLastLog)
+# Opciones por defecto en caso de que el usuario no especifique nada.
 default=(22 no no no yes 2) 
 for((i=0;i<${#textos[*]};++i))
 do

@@ -1,0 +1,10 @@
+#!/bin/bash
+function uninstall () {
+
+}
+function uninstall_go (){
+echo "Se Procedera a Desinstalar OpenSSH, este proceso es automatico"
+sleep 1
+echo "Pero antes necesitamos tu contraseña para continuar"
+su-metodo "$pm $update;$pm $instal $package"
+}

@@ -1,0 +1,24 @@
+#!/bin/bash
+# Selecciona el Entorno 
+function set_env(){
+if [ ${check_status[0]} -eq 0 ];then package="emerge" purge="-cav" update="--sync" instal="-a" package="net-misc/openssh"
+elif [ ${check_status[0]} -eq 1 ] || [ ${check_status[0]} -eq 2 ];then pm="apt-get" purge="purge" update="update" instal="-y install" package="openssh-server"
+fi
+}
+
+##Metodo de Subida de Privilegios
+function su_metodo (){
+if type gksu > /dev/null 2>/dev/null;then gksu -S $1
+elif type sudo > /dev/null 2>/dev/null;then su $1
+else echo "Escriba la Contraseña de Root" su -c $1;
+}
+
+## Funcion de Testeo de Conexion a Internet
+function wan_check(){
+ping -c2 8.8.8.8 >/dev/null 2> /dev/null
+if [ $? -eq 0 ]
+then $1
+fi
+}
+
+
