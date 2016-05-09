@@ -1,9 +1,9 @@
 #!/bin/bash
 
 function workdir (){
-if not exist /tmp/osi;then mkdir /tmp/osi;
-workdir="/tmp/osi";
+if [ ! -d /tmp/osi ];then mkdir /tmp/osi;
 fi
+workdir="/tmp/osi"
 }
 
 # Selecciona el Entorno 

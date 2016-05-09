@@ -38,12 +38,12 @@ done
 
 sus "AllowUsers" "${users[*]" "$tmp"
 
-op="":
+op=""
 ## Añade IP
 ip_invalid=-1;
 ip=()
 echo "Introduce las Direcciones IP que desea permitir conexion SSH"
-echo "pulsa 'q' para terminat"
+echo "pulsa 'q' para terminar"
 until [ "$op" = "q" ]
 do
 read op
