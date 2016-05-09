@@ -14,11 +14,12 @@
 #############################################################################################
 source ./lib
 function configure (){
-## Asigancion de Variables de directorios 
+## Asigancion de Variables de directorios
 ssho="/etc/ssh/sshd_config"
 tmp="$workdir/sshd_config"
 ##Se hace una instancia del fichero por razones de seguridad
-su-metodo "cp $ssho $tmp"
+su_metodo "cp $ssho $tmp"
+su_metodo "chown $USER.$USER $tmp"
 ##
 users=()
 user=-1;
@@ -36,7 +37,7 @@ if [ $op != "q" ];then
 fi
 done
 
-sus "AllowUsers" "${users[*]" "$tmp"
+sust "AllowUsers" "${users[*]}" $tmp
 
 op=""
 ## Añade IP
