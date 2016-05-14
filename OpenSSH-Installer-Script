@@ -12,29 +12,34 @@ clear
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NORM='\033[0m'
-## Directorio de librerias
 files="$PWD/files"
-## Creando Carpeta Temporal (Por si fuera necesario)
-if not exist /tmp/osi;then mkdir /tmp/osi
-workdir="/tmp/osi"
-fi
+## Directorio de librerias
 echo "----------------------------------------------------------------"
 echo "OpenSSH Installer Script by Sifiro"
 echo "----------------------------------------------------------------"
 ##sleep 1
 echo "Se Procedera a hacer un chequeo de requisitos e integridad de los ficheros"
-read
+sleep 1
 ## Mas Informacion en Su Fichero
-source $files/check ## Carga la Libreria Check
+source "$files/check" ## Carga la Libreria Check
+if [ "$1" = "-t" ];then check_status=(1 1 1 1 1 1 1 1)
+else
 check ## Carga la Funcion Check
+fi
 ##################################################
 
-if [ ${check_status}[0]} -ne -1  ];then
+if [ ${check_status[0]} -ne -1  ];then
 ##################################################
-source $files/menu
-source $files/instal
-source $files/configure
+source "$files/lib"
+source "$files/configure"
+source "$files/menu"
+source "$files/instal"
+source "$files/uninstall"
+source "$files/files"
 ##################################################
+workdir ##Creacion del archivo de trabajo
 menu ##Carga el Menu
 else echo "Sistema Operativo no Soportado. Consulte con Sifiro o vaya a hacer un pull request"
 fi
+
+if [ -d $workdir ];then rm -r $workdir;fi

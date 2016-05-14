@@ -2,12 +2,12 @@
 function algoritm () {
 sha256sum $1 | cut -d' ' -f1
 }
-work="$OLDPWD/files"
-files=('menu' 'install' 'configure' 'files' 'uninstall' 'lib')
+work="../files"
+files=('menu' 'instal' 'configure' 'files' 'uninstall' 'lib')
 sha256=('' '' '' '' '')
 for((i=0;i<${#files[@]};++i))
 do
-sha256[i]=`algoritm $work/${files[i]}`
+sha256[i]=`algoritm "$work/${files[i]}"`
 done
 
-sed "/^files_sha256/ cfiles_sha256=(${sha256[*]})" check > tmp
+sed "/^files_sha256/ cfiles_sha256=(${sha256[*]})" $work/check > tmp&& mv tmp $work/check

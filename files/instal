@@ -1,29 +1,27 @@
 #!/bin/bash
-clear
 ##Flag
-##check_status=(1 1 1 1 1 1 1);
-
 function instal_go (){
+clear
 echo "Se Procedera a Instalar OpenSSH, este proceso es automatico"
 sleep 1
 echo "Pero antes necesitamos tu contraseña para continuar"
-su-metodo "$pm $update;$pm $instal $package"
+su_metodo "$pm $update"
+su_metodo "$pm $instal $package"
 }
 
 function instal (){
+clear
 set_env
 opcion="";
-while [ opcion != "" ]
+while [ true ]
 do
 echo "Esta Operacion requerira conexion a Internet"
 echo "Se Comprobara que tengas Conexion a Internet"
-echo "Quieres Comenzar?"
-echo "1=Si o 2=No"
+echo "Quieres Comenzar?[Si/S/Yes/Y N/No]"
 read opcion
-case "$opcion" in
-	1)wan_test instal_go;;
-	2)break;;
-esac
+if [ "$opcion" = "S" ] || [ "$opcion" = "s" ]  || [ "$opcion" = "Si" ] || [ "$opcion" = "Y" ] || [ "$opcion" = "Yes" ];then wan_check instal_go;break;
+elif [ "$opcion" = "No" ] || [ "$opcion" = "n" ] || [ "$opcion" = "N" ];then break
+else echo "Perdon?, Escriba de nuevo"
+fi
 done
 }
-

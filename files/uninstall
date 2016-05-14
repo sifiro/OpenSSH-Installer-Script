@@ -1,10 +1,20 @@
 #!/bin/bash
 function uninstall () {
-
+set_env
+while [ true ]
+do
+echo "¿Vamos a proceder a desinstalar OpenSSH esta seguro?"
+read opcion
+if [ "$opcion" = "S" ] || [ "$opcion" = "Si" ] || [ "$opcion" = "Y" ] || [ "$opcion" = "Yes" ];then wan_check uninstall_go;break;
+elif [ "$opcion" = "No" ] || [ "$opcion" = "N" ];then break;
+else echo "Perdon?, Escriba de nuevo"
+fi
+done
 }
 function uninstall_go (){
 echo "Se Procedera a Desinstalar OpenSSH, este proceso es automatico"
 sleep 1
 echo "Pero antes necesitamos tu contraseña para continuar"
-su-metodo "$pm $update;$pm $instal $package"
+echo "$pm $purge $package"
+su_metodo "$pm $purge $package"
 }

@@ -1,0 +1,25 @@
+#!/bin/bash
+./lib
+function files(){
+allow="/etc/hosts.allow"
+tmp_allow="$workdir/hosts.allow"
+
+ip_invalid=-1;
+ip=()
+echo "Introduce las Direcciones IP que desea permitir conexion SSH"
+echo "pulsa 'q' para terminar"
+until [ "$op" = "q" ]
+do
+read op
+if [ "$op" != "q"  ];
+        then ip_check $op
+        if [ $ip_invalid -eq 0 ];then 
+                ip="${ip[*]} $op"
+                echo "Direccion $op añadida"
+        else echo "Direccion IP No Valida"
+        fi
+fi
+done
+
+sust 'sshd:' "${ìp[*]}" $file
+}
