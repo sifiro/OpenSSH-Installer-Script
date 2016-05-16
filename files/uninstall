@@ -17,4 +17,18 @@ sleep 1
 echo "Pero antes necesitamos tu contraseña para continuar"
 echo "$pm $purge $package"
 su_metodo "$pm $purge $package"
+#allow="/etc/hosts.allow"
+#deny="/etc/hosts.deny"
+#file_a="$workdir/hosts.allow"
+#file_d="$workdir/hosts.deny"
+#su_metodo "cp $allow $file_a"
+#su_metodo "chown $USER.$USER $file_a"
+#su_metodo "cp $deny $file_d"
+#su_metodo "chown $USER.$USER $file_d"
+#sust 'sshd:' "" $file_a
+#sust 'ALL: ' "" $file_b
+#su_metodo "mv $allow /etc/hosts.allow.bak"
+#su_metodo "mv $allow /etc/hosts.deny.bak"
+#su_metodo "cp $file_a $allow"
+#su_metodo "cp $file_d $deny"
 }

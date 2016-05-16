@@ -1,11 +1,19 @@
 #!/bin/bash
-./lib
 function files(){
 allow="/etc/hosts.allow"
-tmp_allow="$workdir/hosts.allow"
+deny="/etc/hosts.deny"
+file_a="$workdir/hosts.allow"
+file_a="$workdir/hosts.deny"
+su_metodo "cp $allow $file_a"
+su_metodo "chown $USER.$USER $file_a"
+su_metodo "cp $deny $file_d"
+su_metodo "chown $USER.$USER $file_d"
 
+if [ ${#ip[*]} -ne 0 ];then 
+sust 'sshd:' "${ip[*]}" $file_a
+else
+ip=();
 ip_invalid=-1;
-ip=()
 echo "Introduce las Direcciones IP que desea permitir conexion SSH"
 echo "pulsa 'q' para terminar"
 until [ "$op" = "q" ]
@@ -20,6 +28,11 @@ if [ "$op" != "q"  ];
         fi
 fi
 done
-
-sust 'sshd:' "${ìp[*]}" $file
+sust 'sshd:' "${ìp[*]}" $file_a
+sust 'ALL: ' "*" $file_d
+su_metodo "mv $allow /etc/hosts.allow.bak"
+su_metodo "mv $allow /etc/hosts.deny.bak"
+su_metodo "cp $file_a $allow"
+su_metodo "cp $file_d $deny"
+fi
 }

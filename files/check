@@ -22,7 +22,7 @@
 function check () {
 ## Variables Iniciales
 names=("menu" "instal" "configure" "files" "uninstall" "lib")
-files_sha256=(a15c4c6392c6d296771f6aa97c87e0534aea26aa8bb7d91eaa212b956a2ca397 2bc135832b7b87e0216495bd8b5d000fe11e0cfb916339e0442eca5f42c1eeac 07e0f4e8d2994a02f9d9cc5c93ea9360976a956a6ae226d20a340dca7629fda3 c803aba8f27f1432f5bdf29d0f3c98ce378bedc9496140a8bf0735105cd28926 779f41b691d662f24fde28022234834aca702e17ab11272e4f46a6c4e32149c2 1019536e4f6d13457abc03608e48217a4614422f8c112d92300ab895d936c707)
+files_sha256=(ecccfaf484c708a5df2db3aba8d9aa2b7f25d9af733abb92d8e3480e477de8c0 078c15168770e8d950b68d12d5758373776f94175e9fd2c0ef98c7ab478972f1 2f4c2302cffda06d8921f2ba97e6bc8895dd0f1fe6d70aacf6f1d2e5f8f2b4d9 dc77c1d1fed4ea57215f6551e978351fa56f3e73a7ca0f64886248cd1332d3a7 e84b3e87db9a2c798b34051e9cb789434ebbe85d4acd4c2edf34ca4112f0839d 7179eee23557ef7156d2d3979dd4da5466ddf205e98e793abe7e61a236fbf09c)
 # 0 -- Diestro Compatible 1-5 Check de Ficheros
 # El Primer elemento del Array indica el Sistema operativo compatible que se usara y apartir de ahi su gestor de paquetes
 check_status=(-1 0 0 0 0 0);
